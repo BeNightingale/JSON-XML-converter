@@ -1,0 +1,7 @@
+.gradle/
+.idea/
+gradle/wrapper/gradle-wrapper.jar
+*.bin
+*.jar
+*.class
+JSON - XML converter/task/build/*
