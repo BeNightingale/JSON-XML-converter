@@ -461,21 +461,8 @@ files:
   visible: true
   learner_created: true
 feedback_link: https://hyperskill.org/projects/61/stages/330/implement#comment
-status: Failed
+status: Solved
 feedback:
-  message: |-
-    Wrong answer in test #1
-
-    Your first symbol is wrong - &#39;{&#39; instead of &#39;&lt;&#39; or vice versa
-
-    &lt;employee department = &quot;manager&quot;&gt;Garry Smith&lt;/employee&gt;
-    {&quot;employee department = &quot;manager&quot;&quot;:&quot;Garry Smith&quot;}
-
-    {
-        &quot;employee&quot; : {
-            &quot;@department&quot; : &quot;manager&quot;,
-            &quot;#employee&quot; : &quot;Garry Smith&quot;
-        }
-    }
-  time: "Fri, 30 Dec 2022 17:22:47 UTC"
+  message: Congratulations!
+  time: "Sat, 31 Dec 2022 16:43:59 UTC"
 record: 2

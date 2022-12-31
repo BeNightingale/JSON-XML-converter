@@ -629,6 +629,9 @@ files:
         }
     }
   learner_created: false
+- name: src/converter/test.txt
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/61/stages/331/implement#comment
 status: Unchecked
-record: -1
+record: 3
