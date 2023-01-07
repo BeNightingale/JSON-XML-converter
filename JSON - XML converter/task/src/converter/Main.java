@@ -1,5 +1,8 @@
 package converter;
 
+import converter.XmlToElements.SinglePiece;
+import converter.XmlToElements.XmlToElementsConverter;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -8,8 +11,8 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-      //  Path path = Path.of("JSON - XML converter/task/src/converter/test.txt");
-        Path path = Path.of("test.txt");
+        Path path = Path.of("JSON - XML converter/task/src/converter/test.txt");
+      //  Path path = Path.of("test.txt");
         List<String> lines = Files.readAllLines(path);
 
         lines.replaceAll(String::trim);

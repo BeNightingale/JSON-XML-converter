@@ -1,4 +1,6 @@
-package converter;
+package converter.XmlToElements;
+
+import converter.XmlToElements.PieceType;
 
 public class SinglePiece {
     String name;

@@ -1,8 +1,10 @@
-package converter;
+package converter.XmlToElements;
+
+import converter.Element;
 
 import java.util.*;
 
-import static converter.PieceType.*;
+import static converter.XmlToElements.PieceType.*;
 
 public class XmlToElementsConverter {
 

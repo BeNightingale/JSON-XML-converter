@@ -1,4 +1,4 @@
-package converter;
+package converter.XmlToElements;
 
 public enum PieceType {
     OPENING_TAG, ENDING_TAG, NULL_VALUE_TAG, VALUE

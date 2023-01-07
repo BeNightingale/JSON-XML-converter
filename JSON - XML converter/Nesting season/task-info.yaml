@@ -632,19 +632,19 @@ files:
 - name: src/converter/test.txt
   visible: true
   learner_created: true
-- name: src/converter/Element.java
-  visible: true
-  learner_created: true
-- name: src/converter/PieceType.java
-  visible: true
-  learner_created: true
-- name: src/converter/SinglePiece.java
-  visible: true
-  learner_created: true
-- name: src/converter/XmlToElementsConverter.java
-  visible: true
-  learner_created: true
 - name: test.txt
+  visible: true
+  learner_created: true
+- name: src/converter/XmlToElements/PieceType.java
+  visible: true
+  learner_created: true
+- name: src/converter/XmlToElements/SinglePiece.java
+  visible: true
+  learner_created: true
+- name: src/converter/XmlToElements/XmlToElementsConverter.java
+  visible: true
+  learner_created: true
+- name: src/converter/Element.java
   visible: true
   learner_created: true
 feedback_link: https://hyperskill.org/learn/step/5473#comment
