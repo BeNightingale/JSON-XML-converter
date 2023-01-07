@@ -460,7 +460,7 @@ files:
 - name: src/converter/test.txt
   visible: true
   learner_created: true
-feedback_link: https://hyperskill.org/projects/61/stages/330/implement#comment
+feedback_link: https://hyperskill.org/learn/step/5472#comment
 status: Solved
 feedback:
   message: Congratulations!

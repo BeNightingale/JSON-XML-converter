@@ -3,30 +3,25 @@ package converter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
 
-        // This program allows to convert individual xml or json elements
-        String output = "";
-        //    Path path = Path.of("JSON - XML converter/task/src/converter/test.txt"); // Helps to test examples
-        Path path = Path.of("test.txt");   // file for testing solution by system
+      //  Path path = Path.of("JSON - XML converter/task/src/converter/test.txt");
+        Path path = Path.of("test.txt");
         List<String> lines = Files.readAllLines(path);
-        for (String line : lines) {
-            if (line.startsWith("<")) {
-                output = convertXmlToJson(line);
-            } else if (line.startsWith("{")) {
-                final StringBuilder stringBuilder = new StringBuilder();
-                lines.forEach(stringBuilder::append);
-                output = convertJsonToXml(stringBuilder.toString());
-            }
-            // System.out.println(output);
+
+        lines.replaceAll(String::trim);
+        final StringBuilder stringBuilder = new StringBuilder();
+        lines.forEach(stringBuilder::append);
+        XmlToElementsConverter xmlToElementsConverter = new XmlToElementsConverter();
+        List<String> list = xmlToElementsConverter.divideIntoPieces(stringBuilder.toString());
+        List<SinglePiece> list2 = xmlToElementsConverter.convertPiecesListIntoSinglePiecesList(list);
+        List<Element> list3 = xmlToElementsConverter.buildElementsTree(list2);
+        for (int i = 0; i < list3.size(); i++) {
+            System.out.println(list3.get(i));
         }
-        System.out.println(output);
     }
 
     private static String convertXmlToJson(String stringXmlLine) {
@@ -37,7 +32,7 @@ public class Main {
         int keyLength = arrayKey.length;
         Map<String, String> attributeMap = Collections.emptyMap();
         if (keyLength > 1) {
-            attributeMap = new HashMap<>();
+            attributeMap = new LinkedHashMap<>();
             for (int i = 1; i < keyLength - 2; i += 3) {
                 attributeMap.put(arrayKey[i], arrayKey[i + 2]);
             }
@@ -94,5 +89,37 @@ public class Main {
         String xmlNoNull = String.format("<%s%s>%s</%s>", key, stringBuilder, value.replace("\"", ""), key);
         String xmlWithNull = String.format("<%s%s/>", key, stringBuilder);
         return "null".equals(value) ? xmlWithNull : xmlNoNull;
+    }
+
+// poprawić nazwę ścieżki = doklejanie części nazwy
+// brak prawidłowego stringowania, gdy powinny być nested parts = ma byc tylko path a pisze value = null
+    // konwertuje podstawowy element
+    // <ss>value</ss>
+    //<ss></ss>
+    //<ss/>
+// każda pojedyncza linijka bez nested (i bez blank na początku) działa ok
+    private static Element convertOneXmlLineToElement(String line) {
+        Element element = new Element();
+        String[] array = line.split(">");
+        int len = array.length;
+        String key = array[0].substring(1).replace("/", "");
+        String[] arrayKey = key.split(" ");
+        int keyLength = arrayKey.length;
+        Map<String, String> attributeMap = null;
+        if (keyLength > 1) {
+            attributeMap = new TreeMap<>();
+            for (int i = 1; i < keyLength; i++) {
+                String[] att = arrayKey[i].split("=");
+                attributeMap.put(att[0], att[1]);
+            }
+        }
+        element.setAttributes(attributeMap);
+        element.setPath(arrayKey[0]);
+        String value = (len == 1) ? "null" : array[1].split("<")[0];
+        if (!"null".equals(value)) {
+            value = "\"" + value + "\"";
+        }
+        element.setValue(value);
+        return element;
     }
 }

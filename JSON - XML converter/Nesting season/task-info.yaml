@@ -632,6 +632,24 @@ files:
 - name: src/converter/test.txt
   visible: true
   learner_created: true
-feedback_link: https://hyperskill.org/projects/61/stages/331/implement#comment
-status: Unchecked
+- name: src/converter/Element.java
+  visible: true
+  learner_created: true
+- name: src/converter/PieceType.java
+  visible: true
+  learner_created: true
+- name: src/converter/SinglePiece.java
+  visible: true
+  learner_created: true
+- name: src/converter/XmlToElementsConverter.java
+  visible: true
+  learner_created: true
+- name: test.txt
+  visible: true
+  learner_created: true
+feedback_link: https://hyperskill.org/learn/step/5473#comment
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Mon, 02 Jan 2023 19:17:57 UTC"
 record: 3
